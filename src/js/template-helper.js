@@ -3,9 +3,9 @@
 export default class TemplateHelper {
 	constructor() {
 		this._htmlToElement = function(html) {
-    		let template = document.createElement('template');
-    		template.innerHTML = html;
-    		return template.content.firstChild;
+			let template = document.createElement('template');
+			template.innerHTML = html;
+			return template.content.firstChild;
 		}
 
 		this._movieInfoHTML= '<div><h3 class = "movie-title"></h3><h3 class = "movie-year"></h3><div class = "actors">Actors: </div><div class = "directors">Directors: </div></div>';
@@ -44,7 +44,7 @@ export default class TemplateHelper {
 		//remove all child spans from .actors container
 		let actorsList = this._movieInfoElement.querySelectorAll('.actors span');
 		for (let i = 0; i < actorsList.length; ++i) {
-  			actorsList[i].parentNode.removeChild(actorsList[i]);
+			actorsList[i].parentNode.removeChild(actorsList[i]);
 		}
 
 		movie.meta.actors.forEach(entry => {
@@ -55,7 +55,7 @@ export default class TemplateHelper {
 
 		let directorsList = this._movieInfoElement.querySelectorAll('.directors span');
 		for (let i = 0; i < directorsList.length; ++i) {
-  			directorsList[i].parentNode.removeChild(directorsList[i]);
+			directorsList[i].parentNode.removeChild(directorsList[i]);
 		}
 		
 		movie.meta.directors.forEach(entry => {
@@ -68,7 +68,7 @@ export default class TemplateHelper {
 	markAsSelected(id) {
 		let list = document.querySelectorAll('.movies-list li');
 		for (let i = 0; i < list.length; ++i) {
-  			list[i].className = '';
+			list[i].className = '';
 		}
 		document.getElementById(id).className = 'selected';
 	}

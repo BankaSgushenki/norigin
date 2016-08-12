@@ -27,7 +27,17 @@ module.exports = function makeWebpackConfig() {
   }
 
   config.module = {
-    preLoaders: [],
+    preLoaders: [
+      {
+        test: /\.js$/,
+        loader: 'eslint-loader',
+        exclude: /node_modules/
+      }
+    ],
+    eslint: {
+      failOnWarning: false,
+      failOnError: true
+    },
     loaders: [{
       test: /\.js$/,
       loader: 'babel',

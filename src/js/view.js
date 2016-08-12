@@ -28,7 +28,7 @@ export default class MoviesView {
 			this._templater.markAsSelected(movie.id);
 
 			while(this._video.firstChild) {
-    			this._video.removeChild(this._video.firstChild);
+				this._video.removeChild(this._video.firstChild);
 			}
 
 			this._templater.createPlayerSource(movie.streams).forEach(source => {
