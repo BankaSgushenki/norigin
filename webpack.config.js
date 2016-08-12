@@ -8,7 +8,7 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 var ENV = process.env.npm_lifecycle_event;
 var isProd = ENV === 'build';
 
-module.exports = function makeWebpackConfig () {
+module.exports = function makeWebpackConfig() {
 
   var config = {};
 
@@ -49,7 +49,7 @@ module.exports = function makeWebpackConfig () {
     new ExtractTextPlugin('bundle.css')
   ];
 
-  if (isProd) {
+  if(isProd) {
     config.plugins.push(
       new webpack.NoErrorsPlugin(),
 
