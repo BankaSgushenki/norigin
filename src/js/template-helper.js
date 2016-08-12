@@ -41,9 +41,10 @@ export default class TemplateHelper {
 			movieInfoElement.querySelector('.movie-year').innerHTML = movie.meta.releaseYear;
 
 			//remove all child spans from .actors container
-			movieInfoElement.querySelectorAll('.actors span').forEach(function(element) {
-				element.parentNode.removeChild(element);
-			})
+			let actorsList = movieInfoElement.querySelectorAll('.actors span');
+			for (let i = 0; i < actorsList.length; ++i) {
+  				actorsList[i].parentNode.removeChild(actorsList[i]);
+			}
 
 			movie.meta.actors.forEach(function(entry) {
 				let actor = document.createElement('span');
@@ -51,9 +52,10 @@ export default class TemplateHelper {
 				movieInfoElement.querySelector('.actors').appendChild(actor);
 			})
 
-			movieInfoElement.querySelectorAll('.directors span').forEach(function(element) {
-				element.parentNode.removeChild(element);
-			})
+			let directorsList = movieInfoElement.querySelectorAll('.directors span');
+			for (let i = 0; i < directorsList.length; ++i) {
+  				directorsList[i].parentNode.removeChild(directorsList[i]);
+			}
 			
 			movie.meta.directors.forEach(function(entry) {
 				let director = document.createElement('span');
