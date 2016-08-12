@@ -26,7 +26,6 @@ export default class MoviesService {
 			this._moviesList = JSON.parse(data);
 			this._aсtiveMovie = this._moviesList[0];
 			this._observer.notify(); //notify all subscribers about model changes
-
 		});
 	}
 
