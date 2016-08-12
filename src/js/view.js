@@ -4,49 +4,49 @@ import TemplateHelper from './template-helper';
 
 export default class MoviesView {
 	constructor(model) {
-		let moviesList = document.querySelector('.movies-list'),
-			detailedInfo = document.querySelector('.movie-info'),
-			video = document.querySelector('video'),
-			templater = new TemplateHelper(),
-			loading = true;
+		this._moviesList = document.querySelector('.movies-list');
+		this._detailedInfo = document.querySelector('.movie-info');
+		this._video = document.querySelector('video');
+		this._templater = new TemplateHelper();
+		this._loading = true;
 
 		/**
 		 * Append static DOM templates to containers
 		 */	
-		var drawView = function() {
+		this._drawView = function() {
 				let list = model.getShortMovieInfo();
-				moviesList.appendChild(templater.getMoviesListTemplate(list));
-				detailedInfo.appendChild(templater.getMovieInfoTemplate());
+				this._moviesList.appendChild(this._templater.getMoviesListTemplate(list));
+				this._detailedInfo.appendChild(this._templater.getMovieInfoTemplate());
 		}
 
 		/**
 		 * Updates view after model state changes
 		 */	
-		var updateView= function() {
+		this._updateView= function() {
 			let movie = model.getActiveMovie();
-			templater.fillPreview(movie);
-			templater.markAsSelected(movie.id);
+			this._templater.fillPreview(movie);
+			this._templater.markAsSelected(movie.id);
 
-			while(video.firstChild) {
-    			video.removeChild(video.firstChild);
+			while(this._video.firstChild) {
+    			this._video.removeChild(this._video.firstChild);
 			}
 
-			templater.createPlayerSource(movie.streams).forEach(function(source) {
-				video.appendChild(source);
+			this._templater.createPlayerSource(movie.streams).forEach(source => {
+				this._video.appendChild(source);
 			})
-			video.poster = 'img/' + movie.images.placeholder;
-			video.load();
+			this._video.poster = 'img/' + movie.images.placeholder;
+			this._video.load();
 		}
+	}
 
-		/**
-		 * Public method, which is called from model, when it changes
-		 */	
-		this.notify = function() {
-			if(loading) {
-				drawView(); //first loading
-				loading = false;
-			}
-			updateView();
+	/**
+	* Public method, which is called from model, when it changes
+	*/	
+	notify() {
+		if(this._loading) {
+			this._drawView(); //first loading
+			this._loading = false;
 		}
+		this._updateView();
 	}
 }

@@ -5,61 +5,61 @@ import loadJSON from './json-loader';
 
 export default class MoviesService {
 	constructor() {
-		let moviesList = [],
-			observer = new Observer,
-			avtiveMovie;
+		this._moviesList = [];
+		this._observer = new Observer;
+		this._aсtiveMovie;
 
 		/**
 		 * returns movie with specified id
 		 * @param {String} id
 		 * @return {Object} movie
 		 */	
-		let getMovieInfoById = function(id) {
-			return moviesList.filter(entry => {
+		this._getMovieInfoById = function(id) {
+			return this._moviesList.filter(entry => {
 				return entry.id === id;
 			})[0];
 		}
 
 		loadJSON('movies.json', data => {
-			moviesList = JSON.parse(data);
-			avtiveMovie = moviesList[0];
-			observer.notify(); //notify all subscribers about model changes
+			this._moviesList = JSON.parse(data);
+			this._aсtiveMovie = this._moviesList[0];
+			this._observer.notify(); //notify all subscribers about model changes
 
 		});
+	}
 
-		/**
-		 * returns movies array with short information 
-		 * @return {Array} movies
-		 */	
-    	this.getShortMovieInfo = function() {
-			return moviesList.map(entry => {
-				return {
-					id: entry.id,
-					title: entry.title,
-					cover: entry.images.cover,
-					year: entry.meta.releaseYear
-				}
-			});
-		}
+	/**
+	* returns movies array with short information 
+	* @return {Array} movies
+	*/	
+    getShortMovieInfo() {
+		return this._moviesList.map(entry => {
+			return {
+				id: entry.id,
+				title: entry.title,
+				cover: entry.images.cover,
+				year: entry.meta.releaseYear
+			}
+		});
+	}
 
-		this.setActiveMovie = function(id) {
-			avtiveMovie = getMovieInfoById(id);
-			observer.notify();
-		}
+	setActiveMovie(id) {
+		this._aсtiveMovie = this._getMovieInfoById(id);
+		this._observer.notify();
+	}
 
-		this.getActiveMovie = function() {
-			return avtiveMovie;
-		}
+	getActiveMovie() {
+		return this._aсtiveMovie;
+	}
 
-		/**
-		 * Subscribes provided entities for model changes
-		 * @param {Arguments} entity
-		 */	
-		this.subscribe = function(...args) {
-            observer.removeAll();
-            args.forEach(elem => {
-                observer.add(elem);
-            });
-        }
+	/**
+	* Subscribes provided entities for model changes
+	* @param {Arguments} entity
+	*/	
+	subscribe(...args) {
+        this._observer.removeAll();
+        args.forEach(elem => {
+            this._observer.add(elem);
+        });
 	}
 }
