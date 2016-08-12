@@ -8,6 +8,6 @@ export default function loadJSON(url, callback) {
 		if (xhr.readyState == 4 && xhr.status == '200') {
 			callback(xhr.responseText);
 		}
-	}
+	};
 	xhr.send(null);
 }

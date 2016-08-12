@@ -2,6 +2,7 @@
 
 export default class MoviesController {
 	constructor(model, view) {
+		model.init();
 		model.subscribe(view); //subscribe view on model changes
 
 		document.querySelector('.movies-list').addEventListener('click',e => {

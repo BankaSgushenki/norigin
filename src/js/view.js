@@ -17,7 +17,7 @@ export default class MoviesView {
 				let list = model.getShortMovieInfo();
 				this._moviesList.appendChild(this._templater.getMoviesListTemplate(list));
 				this._detailedInfo.appendChild(this._templater.getMovieInfoTemplate());
-		}
+		};
 
 		/**
 		 * Updates view after model state changes
@@ -33,10 +33,10 @@ export default class MoviesView {
 
 			this._templater.createPlayerSource(movie.streams).forEach(source => {
 				this._video.appendChild(source);
-			})
+			});
 			this._video.poster = 'img/' + movie.images.placeholder;
 			this._video.load();
-		}
+		};
 	}
 
 	/**

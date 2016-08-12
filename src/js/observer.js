@@ -16,6 +16,6 @@ export default class Observer {
     notify() {
         this._observers.forEach(elem => {
             elem.notify();
-        })
+        });
     }
 }

@@ -6,7 +6,7 @@ export default class TemplateHelper {
 			let template = document.createElement('template');
 			template.innerHTML = html;
 			return template.content.firstChild;
-		}
+		};
 
 		this._movieInfoHTML= '<div><h3 class = "movie-title"></h3><h3 class = "movie-year"></h3><div class = "actors">Actors: </div><div class = "directors">Directors: </div></div>';
 		this._movieListItemHTML = '<li><img class = "movie-cover" src=""><p class = "movie-title"></p><p class = "movie-year"></p></li>';

@@ -18,8 +18,10 @@ export default class MoviesService {
 			return this._moviesList.filter(entry => {
 				return entry.id === id;
 			})[0];
-		}
+		};
+	}
 
+	init() {
 		loadJSON('movies.json', data => {
 			this._moviesList = JSON.parse(data);
 			this._aсtiveMovie = this._moviesList[0];
@@ -39,7 +41,7 @@ export default class MoviesService {
 				title: entry.title,
 				cover: entry.images.cover,
 				year: entry.meta.releaseYear
-			}
+			};
 		});
 	}
 
