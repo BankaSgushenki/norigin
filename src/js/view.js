@@ -14,9 +14,9 @@ export default class MoviesView {
 		 * Append static DOM templates to containers
 		 */	
 		this._drawView = function() {
-				let list = model.getShortMovieInfo();
-				this._moviesList.appendChild(this._templater.getMoviesListTemplate(list));
-				this._detailedInfo.appendChild(this._templater.getMovieInfoTemplate());
+			let list = model.getShortMovieInfo();
+			this._moviesList.appendChild(this._templater.getMoviesListTemplate(list));
+			this._detailedInfo.appendChild(this._templater.getMovieInfoTemplate());
 		};
 
 		/**
