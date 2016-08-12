@@ -1,7 +1,7 @@
 'use strict';
 
-import Observer from './observer'
-import loadJSON from './json-loader'
+import Observer from './observer';
+import loadJSON from './json-loader';
 
 export default class MoviesService {
 	constructor() {
