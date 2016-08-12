@@ -23,7 +23,7 @@ export default class TemplateHelper {
 		 */
 		this.createPlayerSource = function(streams) {
 			let sources = [];
-			streams.forEach(function(stream) {
+			streams.forEach(stream => {
 				let source = document.createElement('source');
 				source.src = stream.url;
 				source.type = 'video/' + stream.type;
@@ -46,7 +46,7 @@ export default class TemplateHelper {
   				actorsList[i].parentNode.removeChild(actorsList[i]);
 			}
 
-			movie.meta.actors.forEach(function(entry) {
+			movie.meta.actors.forEach(entry => {
 				let actor = document.createElement('span');
 				actor.innerHTML = entry.name;
 				movieInfoElement.querySelector('.actors').appendChild(actor);
@@ -57,7 +57,7 @@ export default class TemplateHelper {
   				directorsList[i].parentNode.removeChild(directorsList[i]);
 			}
 			
-			movie.meta.directors.forEach(function(entry) {
+			movie.meta.directors.forEach(entry => {
 				let director = document.createElement('span');
 				director.innerHTML = entry.name;
 				movieInfoElement.querySelector('.directors').appendChild(director);
@@ -68,7 +68,7 @@ export default class TemplateHelper {
 			let ul = document.createElement('ul');
 			ul.className += 'movies-list-container';
 
-			list.forEach(function(entry) {
+			list.forEach(entry => {
 				let li = htmlToElement(movieListItemHTML);
 				li.id = entry.id;
 				li.querySelector('img').src = 'img/' + entry.cover;
