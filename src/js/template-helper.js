@@ -64,6 +64,14 @@ export default class TemplateHelper {
 			})
 		}
 
+		this.markAsSelected = function(id) {
+			let list = document.querySelectorAll('.movies-list li');
+			for (let i = 0; i < list.length; ++i) {
+  				list[i].className = '';
+			}
+			document.getElementById(id).className = 'selected';
+		}
+
 		this.getMoviesListTemplate = function(list) {
 			let ul = document.createElement('ul');
 			ul.className += 'movies-list-container';

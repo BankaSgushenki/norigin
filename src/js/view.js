@@ -1,6 +1,6 @@
 'use strict';
 
-import TemplateHelper from './template-helper'
+import TemplateHelper from './template-helper';
 
 export default class MoviesView {
 	constructor(model) {
@@ -25,6 +25,7 @@ export default class MoviesView {
 		var updateView= function() {
 			let movie = model.getActiveMovie();
 			templater.fillPreview(movie);
+			templater.markAsSelected(movie.id);
 
 			while(video.firstChild) {
     			video.removeChild(video.firstChild);

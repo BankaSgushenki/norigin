@@ -45,7 +45,7 @@ module.exports = function makeWebpackConfig() {
   };
 
   config.plugins = [
-    new HtmlWebpackPlugin({title: 'Norigin Test Task', template: 'src/html/app.html', inject: 'body'}),
+    new HtmlWebpackPlugin({title: 'Norigin Test Task', template: 'src/html/app.html'}),
     new ExtractTextPlugin('bundle.css')
   ];
 
