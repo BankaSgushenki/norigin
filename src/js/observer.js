@@ -2,19 +2,20 @@
 
 export default class Observer {
     constructor() {
-        const observers = [];
-        this.add = function(item) {
-            observers.push(item);
-        }
+        this._observers = [];
+    }
 
-        this.removeAll = function() {
-            observers.length = 0;
-        }
+    add(item) {
+        this._observers.push(item);
+    }
 
-        this.notify = function() {
-            observers.forEach(elem => {
-                elem.notify();
-            })
-        }
+    removeAll() {
+        this._observers = [];
+    }
+
+    notify() {
+        this._observers.forEach(elem => {
+            elem.notify();
+        })
     }
 }
